@@ -2,14 +2,48 @@ let plyr;
 let es;
 let eo;
 
-window.addEventListener("init", init, false);
+window.addEventListener("message", receiveMessage, false);
 
-function init(event)
+function receiveMessage(event)
 {
   /*if (event.origin !== "http://example.org:8080")
     return;*/
-  es = event.source;
-  eo = event.origin;
+  switch(e.data.actionType){
+    case 'play':
+      plyr.playVideo();
+      break;
+    case 'pause':
+      plyr.pauseVideo();
+      break;
+    case 'mute':
+      plyr.mute();
+      break;
+    case 'unMute':
+      plyr.unMute();
+      break;
+    case 'seekTo':
+      plyr.seekTo(e.data.to);
+      break;
+    case 'setVolume':
+      plyr.setVolume(e.data.volume);
+      break;
+    case 'setShuffle':
+      plyr.setShuffle(e.data.shuffle);
+      break;
+    case 'setLoop':
+      plyr.setLoop(e.data.loop);
+    case 'getState':
+      e.data.getState(plyr.getPlayerState());
+      break;
+    case 'getCurrentTime':
+      e.data.getCurrentTime(plyr.getCurrentTime());
+      break;
+    case 'getDuration':
+      e.data.getDuration(plyr.getDuration());
+      break;     
+    case 'loadVideoById':
+      plyr.loadVideoById({videoId:e.data.vidId, suggestedQuality:'tiny'});
+  }
 }
 
 
@@ -36,7 +70,7 @@ window.onYouTubePlayerAPIReady = () => {
     },
     events: {
       onReady() {
-          window.parent.postMessage(plyr,'http://localhost:3000');
+          window.parent.postMessage('ready','http://localhost:3000');
           //window.parent.postMessage('ready','http://localhost:3000');
       },
       onStateChange(e) {
