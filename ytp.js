@@ -40,7 +40,7 @@ function receiveMessage(e)
       window.parent.postMessage({resp: plyr.getDuration()},'http://localhost:3000');
       break;     
     case 'loadVideoById':
-      plyr.loadVideoById({videoId:e.data.vidId, suggestedQuality:'tiny'});
+      plyr.loadVideoById({videoId:e.data.vidId, suggestedQuality:'small'});
   }
 }
 
