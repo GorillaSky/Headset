@@ -37,7 +37,7 @@ function receiveMessage(e)
       window.parent.postMessage({resp: plyr.getCurrentTime()},'http://localhost:3000');
       break;
     case 'getDuration':
-      e.data.getDuration(plyr.getDuration());
+      window.parent.postMessage({resp: plyr.getDuration()},'http://localhost:3000');
       break;     
     case 'loadVideoById':
       plyr.loadVideoById({videoId:e.data.vidId, suggestedQuality:'tiny'});
