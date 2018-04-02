@@ -36,7 +36,7 @@ window.onYouTubePlayerAPIReady = () => {
     },
     events: {
       onReady() {
-        if(es!==null && eo!==null){
+        if(es!=null && eo!=null){
           es.postMessage(plyr, eo);
         }
       },
