@@ -1,6 +1,4 @@
 let plyr;
-let es;
-let eo;
 
 window.addEventListener("message", receiveMessage, false);
 
