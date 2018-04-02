@@ -34,9 +34,11 @@ function receiveMessage(e)
       e.data.getState(plyr.getPlayerState());
       break;
     case 'getCurrentTime':
+      window.parent.postMessage({resp: plyr.getCurrentTime()},'file://');
       window.parent.postMessage({resp: plyr.getCurrentTime()},'http://localhost:3000');
       break;
     case 'getDuration':
+      window.parent.postMessage({resp: plyr.getCurrentTime()},'file://');
       window.parent.postMessage({resp: plyr.getDuration()},'http://localhost:3000');
       break;     
     case 'loadVideoById':
@@ -69,6 +71,7 @@ window.onYouTubePlayerAPIReady = () => {
     },
     events: {
       onReady() {
+          window.parent.postMessage('ready','file://');
           window.parent.postMessage('ready','http://localhost:3000');
           //window.parent.postMessage('ready','http://localhost:3000');
       },
