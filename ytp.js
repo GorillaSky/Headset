@@ -34,7 +34,7 @@ function receiveMessage(e)
       e.data.getState(plyr.getPlayerState());
       break;
     case 'getCurrentTime':
-      e.data.getCurrentTime(plyr.getCurrentTime());
+      window.parent.postMessage({resp: plyr.getCurrentTime()},'http://localhost:3000');
       break;
     case 'getDuration':
       e.data.getDuration(plyr.getDuration());
