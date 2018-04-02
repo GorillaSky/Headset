@@ -36,8 +36,8 @@ window.onYouTubePlayerAPIReady = () => {
     },
     events: {
       onReady() {
-          //es.postMessage("init",eo,plyr);
-          window.parent.postMessage('ready','http://localhost:3000');
+          window.parent.postMessage(plyr,'http://localhost:3000');
+          //window.parent.postMessage('ready','http://localhost:3000');
       },
       onStateChange(e) {
       },
